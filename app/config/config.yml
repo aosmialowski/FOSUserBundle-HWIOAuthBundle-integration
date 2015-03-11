@@ -1,0 +1,30 @@
+# FOSUserBundle
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Owl\UserBundle\Entity\User
+    service:
+        user_manager: owl.user_manager
+
+# HWIOAuthBundle
+hwi_oauth:
+    firewall_name: main
+    resource_owners:
+        facebook:
+            type:            facebook
+            client_id:       %fb_client_id%
+            client_secret:   %fb_client_secret%
+            scope:           "email"
+        github:
+            type:            github
+            client_id:       %gh_client_id%
+            client_secret:   %gh_client_secret%
+            scope:           "user:email"
+            paths:
+                email: email
+                username: login
+    fosub:
+        username_iterations: 5
+        properties: # Custom property to store user id
+            facebook: oauthId
+            google: oauthId

@@ -1,0 +1,21 @@
+# Security
+_security_login:
+    pattern: /login
+    defaults: { _controller: OwlUserBundle:Security:login }
+
+_security_check:
+    pattern: /login/check
+
+_security_logout:
+    pattern: /logout
+
+facebook_login:
+    pattern: /login/facebook
+
+github_login:
+    pattern: /login/github
+
+# HWIOAuthBundle
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /login/oauth

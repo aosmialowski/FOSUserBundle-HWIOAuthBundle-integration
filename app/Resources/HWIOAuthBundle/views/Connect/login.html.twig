@@ -1,0 +1,9 @@
+{% extends 'HWIOAuthBundle::layout.html.twig' %}
+
+{% block hwi_oauth_content %}
+    {% for owner in hwi_oauth_resource_owners() %}
+        <a class="btn btn-block btn-{{ owner }}" href="{{ hwi_oauth_login_url(owner) }}">
+            Sign in with {{ owner | trans({}, 'HWIOAuthBundle')|capitalize }}
+        </a>
+    {% endfor %}
+{% endblock hwi_oauth_content %}

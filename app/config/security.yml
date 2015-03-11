@@ -1,0 +1,23 @@
+security:
+    firewalls:
+        main:
+            pattern: ^/
+            oauth:
+                resource_owners:
+                    facebook: facebook_login
+                    github:   github_login
+                login_path: /signin
+                failure_path: /signin
+                oauth_user_provider:
+                    service: owl.provider.oauth
+            form_login:
+                provider: fos_userbundle
+                login_path: _security_login
+                check_path: _security_check
+            logout:
+                path: _security_logout
+
+    access_control:
+        - { path: ^/signin, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/reset-password, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/logout, role: ROLE_USER }
